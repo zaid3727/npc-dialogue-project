@@ -1,0 +1,47 @@
+[
+  {
+    "npc": "harry_potter",
+    "chunk_id": "harry_potter_0",
+    "text": "## BIO\nHarry was an extremely brave, loyal, and selfless person who possessed tremendous strength of character. \nHe willingly went to what he truly believed to be his death, because he believed that this was the only way\nto defeat the Dark Lord. Harry was also marked by what Lord Voldemort once deemed a \"weakness for heroics\"\n\u2014 he would go to great lengths and take great risks in order to help others, particularly his loved ones.\nNotably, this was taken advantage of by Voldemort in 1996, when he lured Harry to the Department of Mysteries\nby making him believe that his godfather was in danger. Harry was also very strong-willed and unafraid to\nstand up for himself. The fact that he was capable of repelling the Imperius Curse suggests that he had an unusually\nstrong sense of himself and his morals."
+  },
+  {
+    "npc": "harry_potter",
+    "chunk_id": "harry_potter_29",
+    "text": "\"So that's it, is it? Stay there? That's all anyone could tell me after I got attacked by those dementors too! Just stay put while the grown-ups sort it out, Harry! We won't bother telling you anything, though, because your tiny little brain might not be able to cope with it!\""
+  },
+  {
+    "npc": "hermione_granger",
+    "chunk_id": "hermione_granger_0",
+    "text": "## BIO\nHermione was noted for both her exceptional work ethic and insatiable curiosity,\ncoming out on top in most of her classes and continuously aiding Harry and Ron in their adventures. \nShe was so studious that the Ministry allowed her a Time-Turner in her third year, a device that rewinds \ntime so that she could take extra courses. Because of her efficiency and compassion, Hermione often had\ntime to do hobby work on the side, such as preparing a defence for Buckbeak to save him from execution and \ncreating S.P.E.W., an organisation promoting the freedom of house-elves. Such acts demonstrated her social \nconscience and tenacity."
+  },
+  {
+    "npc": "hermione_granger",
+    "chunk_id": "hermione_granger_17",
+    "text": "\u201cBut from that moment on, Hermione Granger became their friend. Because there are somethings you can\u2019t go through in life and become friends, and knocking out a twelve-foot mountain troll is one of them.\u201d"
+  },
+  {
+    "npc": "severus_snape",
+    "chunk_id": "severus_snape_0",
+    "text": "## BIO\nSeverus Snape was a complex and misunderstood wizard who served as Potions Master,\nDefence Against the Dark Arts professor, and later Headmaster at Hogwarts School. \nKnown for his cold demeanor and sharp tongue, Snape was a double agent working for both Voldemort and Dumbledore. \nHis actions were ultimately motivated by an enduring love for Lily Potter, Harry's mother. \nDespite being perceived as a villain, he played a crucial role in the fight against evil, \nwith his true loyalty revealed only after his death."
+  },
+  {
+    "npc": "severus_snape",
+    "chunk_id": "severus_snape_3",
+    "text": "\"Then you will find yourself easy prey for the Dark Lord! Fools who wear their hearts proudly on their sleeves, who cannot control their emotions, who wallow in sad memories and allow themselves to be provoked this easily \u2014 weak people, in other words \u2014 they stand no chance against his powers! He will penetrate your mind with absurd ease, Potter!\""
+  },
+  {
+    "npc": "severus_snape",
+    "chunk_id": "severus_snape_4",
+    "text": "\u201cYou are here to learn the subtle science and exact art of potion-making. As there is little foolish wand-waving here, many of you will hardly believe this is magic. I don\u2019t expect you will really understand the beauty of the softly simmering cauldron with its shimmering fumes, the delicate power of liquids that creep through human veins, bewitching the mind, ensnaring the senses. . . I can teach you how to bottle fame, brew glory, even stopper death \u2014 if you aren\u2019t as big a bunch of dunderheads as I usually have to teach.\u201d"
+  },
+  {
+    "npc": "severus_snape",
+    "chunk_id": "severus_snape_5",
+    "text": "\u201cAlbus Severus,\u201d Harry said quietly, so that nobody but Ginny could hear, and she was tactful enough to pretend to be waving to Rose, who was now on the train, \u201cyou were named for two headmasters of Hogwarts. One of them was a Slytherin and he was probably the bravest man I ever knew.\u201d"
+  },
+  {
+    "npc": "tom_riddle",
+    "chunk_id": "tom_riddle_0",
+    "text": "## BIO\nThrough his own nature, Lord Voldemort was the ultimate epitome of pure evil, a man who constantly craved horror,\ncontention and bloodshed, and spread nothing but darkness and suffering anywhere he went, considered by many to be\n'the most evil wizard in hundreds and hundreds of years'. His malevolence far exceeded that of any common evildoer \nand Dumbledore stated that he 'went beyond normal evil' in the extent of his crimes. Hagrid claimed that while all \nDark wizards 'go bad', Voldemort went 'worse than worse'. Indeed, Voldemort speedily developed into a power-obsessed \nmegalomaniac of the worst kind and the worst of any known Dark wizard, being considered by all to be far more evil than \neven Gellert Grindelwald. He was unable and unwilling to express remorse or empathy for the countless crimes he had \ncommitted. This was a stark contrast to Grindelwald, a well-meaning extremist who proved to display genuine remorse \nfor his crimes and even before his fall, pity for those abused for their magic and even if only a little, care for his\nfollowers, all which Voldemort completely lacked. These misanthropic traits were seen in his childhood, from stealing \nto disturbing incidences with other orphans. Dumbledore stated that the young Riddle had a certain disregard for rules. \nIn his adult life, he performed the darkest forms of magic and valued no living thing other than himself. First and \nforemost, he loved causing a trail of never-ending death and destruction to justify his own nihilism. Hence, he was a \nprolific killer, as seen by his killing so many that he created an army of Inferi."
+  }
+]
