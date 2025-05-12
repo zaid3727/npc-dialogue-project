@@ -86,7 +86,6 @@ You can add more characters by placing `.txt` files in `npc_data/`.
 
 ## 🔄 Supported Models
 
-- 🟢 OpenAI `gpt-3.5-turbo` (via API)
 - 🟢 HuggingFace models (`mistral`, `flan-t5`, `llama-2`)
 - Configurable in `src/llm_interface.py`
 
