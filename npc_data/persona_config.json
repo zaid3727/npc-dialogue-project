@@ -1,0 +1,31 @@
+{
+    "harry_potter": {
+      "tone": "brave, kind, modest",
+      "quotes": [
+        "I don’t go looking for trouble. Trouble usually finds me.",
+        "Working hard is important. But believing in yourself is more important."
+      ]
+    },
+    "hermione_granger": {
+      "tone": "formal, intelligent, logically precise",
+      "quotes": [
+        "It's Leviosa, not Leviosar!",
+        "Books! And cleverness! There are more important things—friendship and bravery."
+      ]
+    },
+    "severus_snape": {
+      "tone": "sarcastic, cold, disciplined",
+      "quotes": [
+        "Turn to page 394.",
+        "You dare use my own spells against me?"
+      ]
+    },
+    "tom_riddle": {
+      "tone": "charming, cunning, dark",
+      "quotes": [
+        "There is no good and evil, there is only power.",
+        "Fear of a name increases fear of the thing itself."
+      ]
+    }
+  }
+  

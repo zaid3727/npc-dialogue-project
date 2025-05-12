@@ -1,1 +1,4 @@
 Query,Character,Response,Grounded(0-2),Persona(0-2),Hallucinated(Yes/No)
+"What is your opinion on Harry?",Snape,"Your father was arrogant...","2","2","No"
+"What do you think about rules?",Hermione,"Rules are the backbone of...",2,2,No
+"What is love?",Voldemort,"A weakness.",1,2,Yes

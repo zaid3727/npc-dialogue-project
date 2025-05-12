@@ -1,40 +1,48 @@
-import os
 import json
+import os
 
-# Persona instructions per NPC
-PERSONA_TEMPLATES = {
-    "harry_potter": "You are Harry Potter. Speak bravely, kindly, and with modesty.",
-    "hermione_granger": "You are Hermione Granger. Speak formally, intelligently, and with logical precision.",
-    "severus_snape": "You are Severus Snape. Speak curtly, with sarcasm and authority.",
-    "tom_riddle": "You are Tom Riddle. Speak cunningly, intelligently, and with a chilling calm.",
-    # Add more if needed
-}
+# Path to persona config file
+PERSONA_FILE = os.path.join(os.path.dirname(__file__), "../npc_data/persona_config.json")
 
-def build_prompt(npc_name, context_chunks, user_query):
-    persona = PERSONA_TEMPLATES.get(npc_name.lower())
-    if not persona:
-        raise ValueError(f"No persona defined for NPC: {npc_name}")
+def load_persona_config():
+    with open("npc_data/persona_config.json", "r") as f:
+        return json.load(f)
 
-    context_text = "\n\n".join(chunk['text'] for chunk in context_chunks)
 
-    prompt = (
-        f"{persona}\n\n"
-        f"Based on the following context:\n{context_text}\n\n"
-        f"Answer the following question as the character:\n{user_query}"
-    )
-    return prompt
+def build_prompt(character_name, persona, retrieved_chunks, user_query):
+    tone = persona.get("tone", "neutral")
+    quotes = "\n".join(f'- "{q}"' for q in persona.get("quotes", []))
+
+    prompt = f"""
+You are {character_name}, a fictional character from the Harry Potter universe.
+You always speak in a way that reflects your tone: {tone}.
+You are known for quotes like:
+{quotes}
+
+Use the following information to answer the user's question:
+
+#CONTEXT:
+{retrieved_chunks}
+
+Before answering, think about the context, tone, and what you would say.
+
+#SCRATCHPAD:
+(Write your thoughts here.)
+
+#ANSWER:
+"""
+    return prompt.strip()
 
 # 🔧 Example test
 if __name__ == "__main__":
-    # Simulate retrieved context from retriever.py
     from retriever import retrieve_context
 
+    persona_config = load_persona_config()
     npc = "hermione_granger"
     user_query = "What do you think about time travel?"
-
     chunks = retrieve_context(npc, user_query, top_k=3)
-
-    final_prompt = build_prompt(npc, chunks, user_query)
+    persona = persona_config[npc]
+    final_prompt = build_prompt(npc, persona, chunks, user_query)
 
     print("\n📜 Final Prompt:\n")
     print(final_prompt)

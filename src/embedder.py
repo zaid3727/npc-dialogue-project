@@ -1,73 +1,55 @@
+# src/embedder.py (or similar preprocessing script)
+
 import os
-import glob
-import json
-import faiss
-import numpy as np
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 from sentence_transformers import SentenceTransformer
+import faiss
+import pickle
 
-DATA_DIR = "npc_data"
-OUTPUT_DIR = "data/vector_store"
-os.makedirs(OUTPUT_DIR, exist_ok=True)
+# Load embedding model
+embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
 
-def load_chunks():
-    chunks = []
+# Step 1: Chunk text with overlap
+def chunk_text(text, chunk_size=300, chunk_overlap=50):
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=chunk_size,
+        chunk_overlap=chunk_overlap,
+        separators=["\n\n", "\n", ".", "!", "?", " "]
+    )
+    return splitter.split_text(text)
+
+# Step 2: Process all NPCs and build FAISS index
+def build_vector_store(npc_data_dir="npc_data", save_dir="data/vector_store"):
+    if not os.path.exists(save_dir):
+        os.makedirs(save_dir)
+
+    index = faiss.IndexFlatL2(384)  # 384 dims for MiniLM
     metadata = []
 
-    # Load NPC bios from txt files
-    for filepath in glob.glob(os.path.join(DATA_DIR, "*.txt")):
-        name = os.path.splitext(os.path.basename(filepath))[0]
-        with open(filepath, "r", encoding="utf-8") as f:
-            text = f.read().strip()
-            if not text:
-                continue
-            paragraphs = text.split("\n\n")
-            for i, para in enumerate(paragraphs):
-                if len(para.split()) < 30:
-                    continue
-                chunks.append(para)
+    for filename in os.listdir(npc_data_dir):
+        if filename.endswith(".txt"):
+            npc = filename.replace(".txt", "")
+            with open(os.path.join(npc_data_dir, filename), "r", encoding="utf-8") as f:
+                text = f.read()
+
+            chunks = chunk_text(text)
+            embeddings = embedding_model.encode(chunks)
+
+            for i, embedding in enumerate(embeddings):
+                index.add(embedding.reshape(1, -1))
                 metadata.append({
-                    "npc": name,
-                    "chunk_id": f"{name}_{i}",
-                    "text": para
+                    "npc": npc,
+                    "chunk": chunks[i]
                 })
 
-    # Load book corpus chunks
-    book_path = "data/book_chunks.json"
-    if os.path.exists(book_path):
-        with open(book_path, "r", encoding="utf-8") as f:
-            book_chunks = json.load(f)
-            for i, chunk in enumerate(book_chunks):
-                text = chunk.get("text", "").strip()
-                if len(text.split()) < 30:
-                    continue
-                chunks.append(text)
-                metadata.append({
-                    "npc": "book_corpus",
-                    "chunk_id": f"book_{i}",
-                    "text": text
-                })
+    # Save FAISS index
+    faiss.write_index(index, os.path.join(save_dir, "npc.index"))
 
-    return chunks, metadata
+    # Save metadata
+    with open(os.path.join(save_dir, "metadata.pkl"), "wb") as f:
+        pickle.dump(metadata, f)
 
-
-def build_and_save_index():
-    model = SentenceTransformer("all-MiniLM-L6-v2")
-    chunks, metadata = load_chunks()
-
-    if not chunks:
-        print("❌ No chunks found. Please check your .txt files.")
-        return
-
-    embeddings = model.encode(chunks, convert_to_numpy=True)
-    index = faiss.IndexFlatL2(embeddings.shape[1])
-    index.add(embeddings)
-
-    faiss.write_index(index, os.path.join(OUTPUT_DIR, "npc.index"))
-
-    with open(os.path.join(OUTPUT_DIR, "metadata.json"), "w", encoding="utf-8") as f:
-        json.dump(metadata, f, indent=2)
-
-    print(f"✅ Saved FAISS index with {len(chunks)} entries.")
+    print(f"✅ FAISS index built with {len(metadata)} chunks.")
 
 if __name__ == "__main__":
-    build_and_save_index()
+    build_vector_store()
